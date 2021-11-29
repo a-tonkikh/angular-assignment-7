@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="help-block" *ngIf="showErrors && !projectForm.valid && projectForm.touched">
+          <p>Please fill the form.</p>
+          <ul>
+            <li *ngIf="!projectForm.get('projectName').valid">
+              <span *ngIf="projectForm.get('projectName').errors['nameIsForbidden']">Project Name is invalid!</span>
+              <span *ngIf="projectForm.get('projectName').errors['required']">Project Name is required!</span>
+            </li>
+            <li *ngIf="!projectForm.get('email').valid">
+              Mail is required!
+            </li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <label for="">Project Name</label>
+          <input type="text" formControlName="projectName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input type="email" id="email" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Project Status</label>
+          <select class="form-control" formControlName="projectStatus">
+            <option *ngFor="let status of projectStatus" [value]="status">{{status}}</option>
+            <option *ngIf="!projectStatus" value=""></option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!projectForm.valid">Submit</button>
+      </form>
+      <!--
+          Create a Form with the following Controls and Validators
+          1) Project Name (should not be empty)
+          2) Mail (should not be a empty and a valid email)
+          3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+          4) Submit Button
+
+          Add your own Validator which doesn't allow "Test" as a Project Name
+
+          Also implement that Validator as an async Validator (replace the other one)
+
+          Upon submitting the form, simply print the value to the console
+      -->
+    </div>
+  </div>
+</div>
