@@ -15,16 +15,16 @@
           </ul>
         </div>
         <div class="form-group">
-          <label for="">Project Name</label>
-          <input type="text" formControlName="projectName" class="form-control">
+          <label for="projectName">Project Name</label>
+          <input type="text" formControlName="projectName" class="form-control" id="projectName" name="projectName">
         </div>
         <div class="form-group">
           <label for="email">Mail</label>
-          <input type="email" id="email" formControlName="email" class="form-control">
+          <input type="email" formControlName="email" class="form-control" id="email" name="email">
         </div>
         <div class="form-group">
-          <label for="">Project Status</label>
-          <select class="form-control" formControlName="projectStatus">
+          <label for="projectStatus">Project Status</label>
+          <select class="form-control" formControlName="projectStatus" id="projectStatus" name="projectStatus">
             <option *ngFor="let status of projectStatus" [value]="status">{{status}}</option>
             <option *ngIf="!projectStatus" value=""></option>
           </select>
